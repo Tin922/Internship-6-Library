@@ -67,3 +67,21 @@ CREATE TABLE Borrowings(
     UserID INT REFERENCES Users(UserID)
 	
 );
+
+
+
+ALTER TABLE Authors
+ADD CONSTRAINT CK_Gender
+CHECK (AuthorGender IN ('MALE', 'FEMALE', 'UNKNOWN', 'OTHER'));
+
+ALTER TABLE Borrowings
+ADD CONSTRAINT CK_ReturnDate
+CHECK (ReturnDate > BorrowDate);
+
+ALTER TABLE Books
+ADD CONSTRAINT CK_BookType
+CHECK (BookType IN ('TEXTBOOK', 'ARTISTIC', 'SCIENTIFIC', 'BIOGRAPHY', 'PROFESSIONAL'));
+
+ALTER TABLE Authorships
+ADD CONSTRAINT CK_AuthorType
+CHECK (Authorship IN ('MAIN', 'CONTRIBUTING'));
