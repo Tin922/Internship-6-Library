@@ -237,7 +237,7 @@ WITH AuthorCounts AS (
         a.AuthorID,
         a.Name,
         a.DateOfBirth,
-        b.BookType AS Gender,  -- Assuming BookType stores gender information
+        b.BookType AS Gender,  
         COUNT(DISTINCT au.BookID) AS NumBooksPublished
     FROM
         Authors a
@@ -252,7 +252,7 @@ WITH AuthorCounts AS (
 )
 SELECT
     FLOOR(EXTRACT(DECADE FROM ac.DateOfBirth)::INTEGER / 10) * 10 AS BirthDecade,
-    ac.Gender AS BookType,  -- Rename as needed
+    ac.Gender AS BookType,  
     COUNT(DISTINCT ac.AuthorID) AS NumAuthors
 FROM
     AuthorCounts ac
